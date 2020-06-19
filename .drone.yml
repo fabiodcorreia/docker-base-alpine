@@ -15,6 +15,11 @@ steps:
   - name: build and publish amd64
     image: plugins/docker:linux-amd64
     settings:
+      build_args:
+        - ARCH=x86_64
+        - OVERLAY_ARCH=amd64
+        - BUILD_DATE=${DRONE_BUILD_FINISHED}
+        - VERSION=${DRONE_TAG}
       username:
         from_secret: DOCKERHUB_USERNAME
       password:
@@ -41,6 +46,11 @@ steps:
   - name: build and publish arm64v8
     image: plugins/docker:linux-arm64
     settings:
+      build_args:
+        - ARCH=aarch64
+        - OVERLAY_ARCH=aarch64
+        - BUILD_DATE=${DRONE_BUILD_FINISHED}
+        - VERSION=${DRONE_TAG}
       username:
         from_secret: DOCKERHUB_USERNAME
       password:
@@ -67,6 +77,11 @@ steps:
   - name: build and publish arm32v7
     image: plugins/docker:linux-arm
     settings:
+      build_args:
+        - ARCH=armv7
+        - OVERLAY_ARCH=arm
+        - BUILD_DATE=${DRONE_BUILD_FINISHED}
+        - VERSION=${DRONE_TAG}
       username:
         from_secret: DOCKERHUB_USERNAME
       password:
