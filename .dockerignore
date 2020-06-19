@@ -1,0 +1,8 @@
+.DS_Store
+.git
+.gitignore
+.editorconfig
+.github
+docker-compose.yml
+README.md
+test
