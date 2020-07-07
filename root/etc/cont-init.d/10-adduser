@@ -4,7 +4,12 @@ PUID=${PUID:-911}
 PGID=${PGID:-911}
 
 groupmod -o -g "$PGID" abc
-usermod -o -u "$PUID" abc
+
+_PUID=`id -u abc`
+
+if [ "$_PUID" != "$PUID" ]; then
+  usermod -o -u "$PUID" abc
+fi
 
 chown abc:abc /app
 chown abc:abc /config
