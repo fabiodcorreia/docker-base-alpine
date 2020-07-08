@@ -19,27 +19,33 @@ A custom base image built with Alpine Linux and S6 overlay.
 
 ## Versioning
 
-This image follows the [Semantic Versioning](https://semver.org/) pattern, with some modifications that helps to identify the Operating System version.
+This image follows the [Semantic Versioning](https://semver.org/) pattern.
 
-- **MAJOR** version - Alpine major version
-- **MINOR** version - Alpine minor version
+- **MAJOR** version - Changes on the Alpine version (3.11 to 3.12)
+- **MINOR** version - Changes on the S6 Overlay (2.0.0 to 2.0.1)
 - **PATCH** version - Package updates and other non breaking changes on the image
-- **DRAFT** version - Unstable build for testing (Optional)
+- **DRAFT** version - Unstable build for review (Optional)
 
-An example of a stable version would be `v3.12.1` which represents Alpine Linux 3.12 with docker-base-alpine patch 1, for draft versions they can be represented like `v3.12.1-rc.1`
-where `v3.12.1` has the same meaning as before but `rc.1` shows that this is a release candidate version 1 for that stable version.
+### Version Mapping
+
+| Version    | 1.0     | 1.1     | 2.0     |
+| :----:     | ---     | ---     | ----    |
+| Alpine     | 3.12    | 3.12    | 3.13    |
+| S6 overlay | 2.0.0.1 | 2.0.0.2 | 2.0.0.1 |
+
+When Alpine Linux gets upgraded the major version is incremented, when S6 overlay gets upgraded they minor version is incremented.
 
 ## Tags
 
 | Tag | Description |
 | :----: | --- |
 | latest | Latest version |
-| 3.12.1 | Specific patch version |
-| 3.12 | Specific minor version |
-| 3 | Specific major version |
-| 3.12.1-`arch` | Specific patch version to that `arch` |
-| 3.12-`arch` | Specific minor version to that `arch` |
-| 3-`arch` | Specific major version to that `arch` |
+| 1.0.0 | Specific patch version |
+| 1.0 | Specific minor version |
+| 1 | Specific major version |
+| 1.0.0-`arch` | Specific patch version to that `arch` |
+| 1.0-`arch` | Specific minor version to that `arch` |
+| 1-`arch` | Specific major version to that `arch` |
 | test | Branch version - **DO NOT USE** |
 
 The version tags are the same as the repository versioning tags but without the `v`. The `test` version is only for build purposes, it should not be pulled.
