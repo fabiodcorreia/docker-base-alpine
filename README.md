@@ -59,8 +59,8 @@ The `arch` can be one of the supported architectures described below.
 
 | Name | Description |
 | :----: | --- |
-| PUID | Set the UserID - [Details](##UserID-/-GroupID) |
-| PGID | Set the GroupID - [Details](##UserID-/-GroupID) |
+| PUID | Set the UserID - [Details](#userid--groupid) |
+| PGID | Set the GroupID - [Details](#userid--groupid) |
 | TZ | Set the system timezone - [Options](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) |
 
 ## UserID / GroupID
