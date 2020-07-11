@@ -11,7 +11,6 @@ busybox,\
 libc-utils,\
 xz
 
-# install packages
 RUN \
   apk update && \
   apk add --no-cache \
@@ -20,7 +19,6 @@ RUN \
 	tzdata \
 	xz
 
-# fetch builder script from gliderlabs
 RUN \
   curl -o /mkimage-alpine.bash -L https://raw.githubusercontent.com/gliderlabs/docker-alpine/master/builder/scripts/mkimage-alpine.bash && \
   chmod +x /mkimage-alpine.bash && \
@@ -37,11 +35,9 @@ ARG VERSION
 LABEL build_version="version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="fabiodcorreia"
 
-# set version for s6 overlay
 ARG OVERLAY_VERSION="v2.0.0.1"
 ARG OVERLAY_ARCH="amd64"
 
-# environment variables
 ENV PS1="$(whoami)@$(hostname):$(pwd)\\$ " \
 HOME="/root" \
 TERM="xterm"
@@ -77,7 +73,8 @@ RUN \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
-# add local files
 COPY root/ /
+
+RUN chmod 511 /usr/bin/env-alias
 
 ENTRYPOINT ["/init"]

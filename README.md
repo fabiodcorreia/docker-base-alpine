@@ -83,5 +83,20 @@ id dockeruser
 this command will return something like `uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)`, with this information we can set the `PUID=1000` and `PGID=1000`.
 
 
+## Environment Variable Alias
 
+Since each application uses different environment variables for the same thing, for example `DATABASE_HOST` or `DATABASE_USER` can be `DB_HOST` or `DB_USERNAME`,
+the command [env-alias](root/usr/bin/env-alias) allows to create an alias for the application to use.
 
+For example if the application expect an ENV called `APP_DB_HOST` but for consistency we use `DATABASE_HOST` inside one of the `init.d` scripts (before the ENV value is required), this command
+can be executed and will make a link of the value.
+
+```bash
+env-alias "DATABASE_HOST" "APP_DB_HOST"
+```
+
+After this when the value of `APP_DB_HOST` is requested it will get the value of `DATABASE_HOST`. If the source ENV doesn't exists it will remove the application env in case it's set.
+
+### Environment Variable Names
+
+For common ENVs the names should be consistent across all the containers, a list of common names can be found [here](https://gist.github.com/fabiodcorreia/de318e5d311ead233aff5a4ccc271f19)
